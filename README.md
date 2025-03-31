@@ -1,4 +1,4 @@
-# research_project_template
+# Guidelines
 This template is designed to start a research project with an ultimate goal to write a paper.
 Use this template if you want to (1) keep codes, documents, and references together, (2) perform analyses with different coding languages, and (3) write a paper and take progress notes.
 
