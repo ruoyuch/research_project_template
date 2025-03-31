@@ -26,4 +26,4 @@ I use this file structure to manage my projects.
 I use git/github to do version control (and backup) of my codes, notes, and drafts.
 I use VS Code to do most of my edits.
 Specifically, .do files can be editted and ran with the StataRun extension.
-LaTex works well with the LaTex Workshop extension.
+.tex files work well with the LaTex Workshop extension (with several hours spent on settings.)
