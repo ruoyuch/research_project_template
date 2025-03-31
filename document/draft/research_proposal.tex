@@ -1,0 +1,56 @@
+% Proposal for XXX
+% Author: Ruoyu Chen
+
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\usepackage{bibentry}
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+
+% Page formatting
+%\renewcommand{\rmdefault}{ptm} % Times New Roman
+\geometry{letterpaper, margin=1in} %paper size and margin
+\setstretch{2.0} %double line spacing
+\setlength{\parindent}{2em} %indent for each paragraph
+\setlength{\parskip}{1em} %indent between paragraphs
+
+
+% Section formatting
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalsize}{\thesubsection}{0.5em}{}
+
+
+\begin{document}
+% title information
+\title{How to build a good project template?}
+\author{Ruoyu Chen (\href{mailto:rchen912@usc.edu}{rchen912@usc.edu})}
+\date{\today}
+\maketitle
+
+
+\section{Introduction}\label{sec:intro}
+This is a draft introduction \citep{Chen2022}.
+
+
+\section{Preliminary Results}\label{sec:result}
+
+%%reference settings
+\singlespacing\setlength\bibsep{1em}
+\bibliography{/Users/chenry/Documents/BibTex/library}
+
+\end{document}
