@@ -1,3 +1,4 @@
 /analysis/data/
-/document/asset/
 /document/draft/out/
+/document/presentation/out/
+*.DS_Store

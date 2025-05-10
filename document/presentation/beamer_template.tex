@@ -1,0 +1,68 @@
+% !tex program = pdflatex + bibtex
+% Presentation: A Beamer Template
+% Author: Ruoyu Chen
+% Email: rchen912@usc.edu
+% Web: www.rchen.info
+
+% quick beamer tutorial
+  % input your metadata upfront
+  % use \frame to start each slide
+  % use \section (even \subsection) to organize slides as a group
+  % in each section, you can use
+    % \itemize to build a list
+    % \column{0.5\textwidth} to divide the content
+    % change text using commands below
+      % {\tiny Tiny}  {\small Small}  {\large Large}  
+      % {\Large Larger}  {\LARGE Even Larger}  {\huge Huge}  {\Huge Hugest}
+ 
+% packages
+\documentclass{beamer}
+\usetheme{Madrid} % change theme here
+\usepackage[utf8]{inputenc}
+\usepackage{dcolumn}
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usecolortheme{beaver}
+\usepackage{pgfpages}
+\usepackage{geometry}
+
+% global settings
+\setbeamertemplate{itemize item}{\color{red}$\circ$}
+\setbeamertemplate{itemize subitem}{\color{blue}{\small -}}
+\setbeamertemplate{itemize subsubitem}{\color{blue}$\cdot$}
+\setlength{\itemsep}{1em}
+\geometry{paperwidth=16cm, paperheight=9cm} %16:9 for most pre
+
+% metadata (replace for each project slides)
+\title{My Research Project}
+\subtitle{This is a good project}
+\author{Ruoyu Chen}
+\institute[USC Price]{Price School of Public Policy\\University of Southern California} % [] is the short version, {} is the full version
+\date{\today}
+
+% the main slides document
+\begin{document}
+
+% title page
+\frame{\titlepage}
+
+% new section
+\section{Background}
+
+  % new slide
+  \begin{frame}{How is the template?}
+    \begin{itemize}
+      \setlength\itemsep{1em}
+      \item Test
+      \item I can cite people here \citep{Chen2022}.
+    \end{itemize}
+  \end{frame}
+
+
+% references
+\begin{frame}[allowframebreaks]{References}
+  \small
+  \bibliography{/Users/chenry/Documents/BibTex/library}
+\end{frame}
+
+\end{document}
