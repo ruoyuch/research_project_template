@@ -5,6 +5,7 @@ dependencies = [
     "nbdime>=4.0.0",
     "osmnx[all]>=2.1.0",
     "prek>=0.4.0",
+    "python-dotenv>=1.2.3",
     "seaborn>=0.13.0",
 ]
 description = "Research Project Template "

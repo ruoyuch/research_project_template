@@ -23,5 +23,5 @@ jobs:
           uv run ruff check .
           uv run ruff format --check .
 
-      # - name: test (pytest)
-      #   run: uv run pytest
+      - name: test (pytest)
+        run: uv run pytest
