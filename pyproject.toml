@@ -1,10 +1,7 @@
 [project]
 authors = [{ name = "Ruoyu Chen", email = "rchen912@usc.edu" }]
 dependencies = [
-    "jupyterlab>=4.6.2",
-    "nbdime>=4.0.0",
     "osmnx[all]>=2.1.0",
-    "prek>=0.4.0",
     "python-dotenv>=1.2.3",
     "seaborn>=0.13.0",
 ]
@@ -20,9 +17,10 @@ version = "0.0.0"
 dev = [
     "pytest",
     "ruff",
-    "pre-commit",
+    "prek",
     "nbstripout",
-    "jupyter",
+    "jupyterlab",
+    "nbdime",
     "ipykernel",
 ]
 

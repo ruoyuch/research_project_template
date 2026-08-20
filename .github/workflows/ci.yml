@@ -18,10 +18,8 @@ jobs:
       - name: build uv venv
         run: uv sync --dev
 
-      - name: lint (ruff)
-        run: |
-          uv run ruff check .
-          uv run ruff format --check .
+      - name: run all pre-commit hooks (ruff, nbstripout, hygiene checks)
+        run: uv run prek run --all-files
 
       - name: test (pytest)
         run: uv run pytest
