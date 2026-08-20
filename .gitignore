@@ -1,4 +1,28 @@
-/analysis/data/
-/document/draft/out/
-/document/presentation/out/
+# data & output: gitignored entirely, except the READMEs
+/data/*
+!/data/README.md
+/output/*
+!/output/README.md
+
+# docs 
+/docs/private/*
+!/docs/private/README.md
+
+# secrets
+.env
+
+# python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# latex build artifacts
+/docs/private/draft/out/
+/docs/public/slides/out/
+
+# os
 *.DS_Store
