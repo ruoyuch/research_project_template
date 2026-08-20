@@ -4,7 +4,7 @@
 /output/*
 !/output/README.md
 
-# docs 
+# docs
 /docs/private/*
 !/docs/private/README.md
 
@@ -20,9 +20,19 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 
-# latex build artifacts
-/docs/private/draft/out/
-/docs/public/slides/out/
+# latex build artifacts (anywhere in the repo)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+/docs/public/out/
 
 # os
 *.DS_Store

@@ -12,15 +12,16 @@
     % \itemize to build a list
     % \column{0.5\textwidth} to divide the content
     % change text using commands below
-      % {\tiny Tiny}  {\small Small}  {\large Large}  
+      % {\tiny Tiny}  {\small Small}  {\large Large}
       % {\Large Larger}  {\LARGE Even Larger}  {\huge Huge}  {\Huge Hugest}
- 
+
 % packages
 \documentclass{beamer}
 \usetheme{Madrid} % change theme here
 \usepackage[utf8]{inputenc}
 \usepackage{dcolumn}
 \usepackage{natbib}
+\usepackage{csquotes} % provides \enquote for quote marks
 \bibliographystyle{apalike}
 \usecolortheme{beaver}
 \usepackage{pgfpages}
@@ -62,7 +63,7 @@
 % references
 \begin{frame}[allowframebreaks]{References}
   \small
-  \bibliography{/Users/chenry/Documents/BibTex/library}
+  \bibliography{references}
 \end{frame}
 
 \end{document}
