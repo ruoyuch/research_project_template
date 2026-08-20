@@ -1,0 +1,53 @@
+[project]
+authors = [{ name = "Ruoyu Chen", email = "rchen912@usc.edu" }]
+dependencies = [
+    "jupyterlab>=4.6.2",
+    "nbdime>=4.0.0",
+    "osmnx[all]>=2.1.0",
+    "prek>=0.4.0",
+    "seaborn>=0.13.0",
+]
+description = "Research Project Template "
+license = "MIT"
+license-files = ["LICENSE"]
+name = "project-template"
+readme = "README.md"
+requires-python = "==3.12.*"
+version = "0.0.0"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "pre-commit",
+    "nbstripout",
+    "jupyter",
+    "ipykernel",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/project_package_name"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "pipeline", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501", # line length is handled by ruff-format
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
