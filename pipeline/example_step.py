@@ -3,9 +3,10 @@
 Keep each script ~50 lines: load inputs → call functions from src/ → save
 outputs. All real logic belongs in the package so it can be imported and
 tested; scripts only orchestrate.
-You may number scripts in run order (01_, 02_, ...).
+Name scripts descriptively (build_moves.py, make_figures.py) and document
+the run order in the repo README.
 
-Run with:  uv run python pipeline/step_number_one.py
+Run with:  uv run python pipeline/example_step.py
 """
 
 from project_package_name import config
