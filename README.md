@@ -1,29 +1,55 @@
 # Guidelines
 This template is designed to start a research project with an ultimate goal to write a paper.
-Use this template if you want to (1) keep codes, documents, and references together, (2) perform analyses with different coding languages, and (3) write a paper and take progress notes.
+Use this template if you want to (1) keep code, documents, and references together, (2) run analyses as a testable, reproducible pipeline, and (3) write a paper and take progress notes.
 
 The overall file structure is:
 
 ```markdown
     project_name/
-    ├── analysis/         # All code & data processing
-    │   ├── code/         # Python, Stata scripts, R codes, and notebooks
-    │   └── data/         # Raw or processed data (could add raw/processed split)
+    ├── src/
+    │   └── project_package_name/  # the installable package: ALL logic lives here
+    │       └── config.py          # paths (DATA_ROOT → ./data) + project parameters
     │
-    ├── document/         # The writing zone
-    │   ├── asset/        # Figures, tables, and images for the manuscript
-    │   ├── draft/        # LaTeX or Word files (your actual paper)
-    │   └── note/         # Personal notes, outlines, scratchpad (use .md to take notes)
+    ├── pipeline/                  # the scripts you RUN, in order
+    │   └── step_number_one.py     # each ~50 lines: load → call src functions → save
     │
-    ├── reference/        # Background literature, citations
-    │   ├── topic1/       # Method-related PDFs, papers, bib entries
-    │   ├── topic2/       # Topic-specific references (e.g., urban econ)
-    │   └── ...           
-    └── README.md         # Overview of the project
+    ├── notebooks/                 # exploration only; nothing downstream depends on these
+    ├── tests/                     # synthetic fixtures with known answers
+    ├── data/                      # gitignored; raw/ intermediate/ final/ inside
+    ├── output/                    # gitignored; figures/ + tables/ that the pipeline produces
+    │
+    ├── docs/                      # the writing zone, split by audience
+    │   ├── private/               # gitignored work-in-progress, not meant for sharing
+    │   │   ├── draft/             # LaTeX manuscript in progress
+    │   │   ├── notes/             # progress notes, outlines, scratchpad (.md)
+    │   │   └── references/        # background literature, by topic
+    │   └── public/                # tracked, polished, safe to share
+    │       ├── manuscript.tex     # the paper
+    │       └── slides.tex         # beamer presentation slides
+    │
+    ├── .github/workflows/ci.yml   # runs ruff + pytest on every push
+    ├── pyproject.toml             # dependencies + ruff + pytest config (uv-managed)
+    ├── uv.lock
+    ├── .pre-commit-config.yaml    # ruff, ruff-format, nbstripout before every commit
+    ├── .env.example               # variable names only (real values in gitignored .env)
+    ├── AGENTS.md                  # working conventions for coding agents
+    └── README.md                  # overview of the project
 ```
 
-I use this file structure to manage my projects.
-I use git/github to do version control (and backup) of my codes, notes, and drafts.
-I use VS Code to do most of my edits.
-Specifically, .do files can be edited and run with the StataRun extension.
-.tex files work well with the LaTex Workshop extension (after configuring the necessary settings.)
+## Getting started
+1. Rename `src/project_package_name/` to your project's package name (also update it in `pyproject.toml`).
+2. Install [uv](https://docs.astral.sh/uv/), then run `uv sync --dev` to create `.venv` and install everything from the lockfile.
+3. Run `uv run prek install` to install the git hooks (ruff, ruff-format, nbstripout run before every commit).
+4. If you need a custom `DATA_ROOT` or any API keys, copy `.env.example` to `.env` and fill it in — `.env` stays out of git.
+
+Day to day: `uv run prek run -a` (lint + format + hooks on demand), `uv run pytest` (tests), `uv run python pipeline/<script>.py` (a pipeline step).
+
+## Conventions
+- Environments are managed with **uv** (no conda): `pyproject.toml` declares dependencies, `uv.lock` pins them, `uv run <cmd>` executes inside the venv. Add a package with `uv add <name>` — never edit `.venv` or `uv.lock` by hand.
+- All logic lives in `src/` where it can be imported and tested; `pipeline/` scripts only orchestrate (load → call src functions → save).
+- Git hooks run via **prek** (a fast pre-commit-compatible runner) using `.pre-commit-config.yaml`: ruff (lint + format) and nbstripout on every commit. CI re-checks ruff and runs pytest on every push and PR.
+- `data/` and `output/` never enter git — both are pure pipeline products, reproducible by re-running it. Curated final figures/tables that the manuscript includes belong in `docs/public/`, as siblings of the `.tex` file.
+- `docs/private/` (draft, notes, references) is gitignored — work in progress, no backup beyond your own machine. `docs/public/` is tracked — only promote a file there when it's ready to be shared.
+- See `AGENTS.md` for the fuller set of conventions an AI coding agent (or a coauthor) should follow in this repo.
+
+I use git/github to do version control (and backup) of my code, notes, and drafts, and VS Code for most edits.
