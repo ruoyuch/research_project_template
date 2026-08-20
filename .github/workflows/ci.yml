@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: build uv venv
+        run: uv sync --dev
+
+      - name: run all pre-commit hooks (ruff, nbstripout, hygiene checks)
+        run: uv run prek run --all-files
+
+      - name: test (pytest)
+        run: uv run pytest
